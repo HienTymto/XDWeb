@@ -344,6 +344,7 @@
           <!-- Nội dung hiển thị bên phải -->
 
 
+          @yield('content')
 
           <!-- right col -->
         </div>
