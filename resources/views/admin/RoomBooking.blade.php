@@ -12,14 +12,15 @@
             @foreach($bookedRooms as $roombooking)
                 // Tạo một sự kiện cho mỗi khoảng thời gian trong ngày
                 {
-                    title: '{{ $roombooking->professor }}',
-                    start: '{{ $roombooking->date }}T{{ $roombooking->time }}',
-                    end: '{{ $roombooking->date }}T{{ $roombooking->time }}',
+                    title: '{{ $roombooking->ProfessorName }}, {{ $roombooking->LabID }}',
+                    start: '{{ $roombooking->Date->format("Y-m-d") }}T{{ $roombooking->StartTime }}',
+                    end: '{{ $roombooking->Date->format("Y-m-d") }}T{{ $roombooking->EndTime }}',
                     rendering: 'background', // Hiển thị màu nền cho sự kiện
                     color: '#f0ad4e', // Màu sắc của sự kiện
-                    professor: '{{ $roombooking->professor }}',
-                    room: '{{ $roombooking->room }}',
-                    time: '{{ $roombooking->time }}'
+                    professor: '{{ $roombooking->ProfessorName }}',
+                    room: '{{ $roombooking->LabID }}',
+                    time: '{{ $roombooking->EndTime }}',
+
                 },
             @endforeach
         ],
@@ -39,7 +40,7 @@
 });
 
     </script>
-    
+
     <div class="card">
 
         <div class="card-header">

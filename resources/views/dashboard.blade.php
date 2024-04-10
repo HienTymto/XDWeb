@@ -89,7 +89,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-     
+
       <span class="brand-text font-weight-light">Quản lý phòng máy</span>
     </a>
 
@@ -149,7 +149,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('user.usermanager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thành viên</p>
                 </a>
@@ -198,7 +198,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('computer-list') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách máy tính</p>
                 </a>
@@ -206,7 +206,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('room-booking') }}" class="nav-link">
+                <a href="{{ route('computer-room') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Phòng máy</p>
                 </a>
@@ -214,7 +214,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('repair-list') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bảo trì</p>
                 </a>
@@ -222,7 +222,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('room-booking') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sắp xếp lịch</p>
                 </a>
@@ -262,7 +262,11 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Main row -->
-
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
           @yield('content')
 
         <!-- /.row (main row) -->
@@ -272,7 +276,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    
+
   </footer>
 
   <!-- Control Sidebar -->

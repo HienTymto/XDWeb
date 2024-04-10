@@ -11,11 +11,12 @@ class AdminOnly
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        
+
         if ($user && $user->role === 'admin') {
             return $next($request);
         }
-        
-        return redirect('/'); // Chuyển hướng nếu không phải admin
+
+        return redirect('/dashboard')->with('error', 'Bạn không có quền truy cập vào trang này.');
     }
 }
+

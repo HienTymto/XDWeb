@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Roomallocation
- * 
+ *
  * @property int $AllocationID
  * @property string|null $ProfessorName
  * @property int|null $LabID
@@ -29,7 +29,7 @@ class Roomallocation extends Model
 
 	protected $casts = [
 		'LabID' => 'int',
-		'Date' => 'datetime',
+		'Date' => 'date',
 		'StartTime' => 'datetime',
 		'EndTime' => 'datetime'
 	];
@@ -41,4 +41,8 @@ class Roomallocation extends Model
 		'StartTime',
 		'EndTime'
 	];
+    public function getStartTimeAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i:s');
+    }
 }

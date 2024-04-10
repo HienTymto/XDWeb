@@ -13,13 +13,14 @@ class RoomController extends Controller
      */
     public function index()
     {
-        // Lấy danh sách phòng và thời gian trống
-        $rooms = Roomallocation::where('Date', '>=', Carbon::today())->orderBy('Date')->orderBy('StartTime')->get();
-    
         // Lấy danh sách các phòng đã đặt
-        $bookedRooms = Roomallocation::where('Date', '>=', Carbon::today())->orderBy('Date')->orderBy('StartTime')->get();
-    
-        return view('admin.RoomBooking', compact('rooms', 'bookedRooms'));
+        $bookedRooms = Roomallocation::whereDate('Date', '>=', Carbon::today()->toDateString())
+        ->orderBy('Date')
+        ->orderBy('StartTime')
+        ->get();
+
+
+        return view('admin.RoomBooking', compact('bookedRooms'));
     }
     /**
      * Show the form for creating a new resource.
